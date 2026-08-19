@@ -15,3 +15,7 @@ I build small, focused tools that help human researchers triage faster — heuri
 ---
 
 Every tool here produces *candidates for manual review*, never verdicts. Verification, judgment, and the actual report stay a human's job — on purpose.
+
+---
+
+Applying for a research-focused CS master's, Fall 2027 — interested in vulnerability discovery & security patch analysis.
