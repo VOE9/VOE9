@@ -10,7 +10,7 @@ I build small, focused tools that help human researchers triage faster — heuri
 
 **[augur](https://github.com/VOE9/augur)** — three sections: `radar` flags commits in a local git clone that look like undisclosed security fixes; `harness` attempts an automatic differential AddressSanitizer proof for a real bug shape, deriving its own test input mechanically from the target function's source; `provenance` finds when a vulnerable pattern was actually introduced (structurally, not "last commit that touched the line" like classic SZZ) and maps it to the real tagged versions affected. Validated against a real, external repository's actual merged fix, independently re-checked by hand — see its `METHODOLOGY.md`.
 
-**[cve-explain](https://github.com/VOE9/cve-explain)** — turns a CVE ID into a plain-language explanation grounded entirely in NVD, EPSS, and GHSA data — including the actual fix commit's diff, when one is linked.
+**[cve-explain](https://github.com/VOE9/cve-explain)** — turns a CVE ID into a plain-language explanation grounded entirely in NVD, EPSS, and GHSA data — including the actual fix commit's diff, when one is linked. Optionally re-derives the affected-version range from the fix repo's real git history via augur's provenance module, instead of trusting NVD's version field for the narrow class of fixes it can independently check.
 
 **[regression-hunter](https://github.com/VOE9/regression-hunter)** — variant analysis: finds candidate files that may not have received a project's own previously-published security fix, seeded from that project's real advisory history.
 
@@ -24,7 +24,8 @@ Small, verified fixes found by reading real projects' code and confirming the bu
 
 - [kaist-hacking/RTCON#2](https://github.com/kaist-hacking/RTCON/pull/2) — merged. Bounded an unchecked `memcpy` in crash-deduplication logic; reproduced the exact fault with AddressSanitizer before and after.
 - [B2R2-org/B2R2#501](https://github.com/B2R2-org/B2R2/pull/501) — merged. Fixed a DEBUG/RELEASE behavioral divergence in the SSA lifter's root-selection logic; verified with the project's own real test suite.
-- Open: [zardus/preeny#90](https://github.com/zardus/preeny/pull/90), [compsec-snu/petal#2](https://github.com/compsec-snu/petal/pull/2), [postech-compsec/swarmbox#13](https://github.com/postech-compsec/swarmbox/pull/13), [WOOSEUNGHOON/Centris-public#7](https://github.com/WOOSEUNGHOON/Centris-public/pull/7)
+- [postech-compsec/swarmbox#13](https://github.com/postech-compsec/swarmbox/pull/13) — merged. Guarded an out-of-bounds read in mission-config parsing; verified against both a debug-assertion build and the actual release build config.
+- Open: [zardus/preeny#90](https://github.com/zardus/preeny/pull/90), [compsec-snu/petal#2](https://github.com/compsec-snu/petal/pull/2), [WOOSEUNGHOON/Centris-public#7](https://github.com/WOOSEUNGHOON/Centris-public/pull/7)
 
 ---
 
