@@ -8,13 +8,15 @@ I build small, focused tools that help human researchers triage faster — heuri
 
 #### Tools
 
-**[augur](https://github.com/VOE9/augur)** — three sections: `radar` flags commits in a local git clone that look like undisclosed security fixes; `harness` attempts an automatic differential AddressSanitizer proof for a real bug shape, deriving its own test input mechanically from the target function's source; `provenance` finds when a vulnerable pattern was actually introduced (structurally, not "last commit that touched the line" like classic SZZ) and maps it to the real tagged versions affected. Validated against a real, external repository's actual merged fix, independently re-checked by hand — see its `METHODOLOGY.md`.
+**[augur](https://github.com/VOE9/augur)** — three sections: `radar` flags commits in a local git clone that look like undisclosed security fixes; `harness` attempts an automatic differential AddressSanitizer proof for a real bug shape, deriving its own test input mechanically from the target function's source; `provenance` finds when a vulnerable pattern was actually introduced (structurally, not "last commit that touched the line" like classic SZZ) and maps it to the real tagged versions affected — and ships a classic B-SZZ implementation next to it, so that comparison is something you run rather than something I claim. Validated against a real, external repository's actual merged fix, independently re-checked by hand — see its `METHODOLOGY.md`.
 
 **[cve-explain](https://github.com/VOE9/cve-explain)** — turns a CVE ID into a plain-language explanation grounded entirely in NVD, EPSS, and GHSA data — including the actual fix commit's diff, when one is linked. Optionally re-derives the affected-version range from the fix repo's real git history via augur's provenance module, instead of trusting NVD's version field for the narrow class of fixes it can independently check.
 
 **[regression-hunter](https://github.com/VOE9/regression-hunter)** — variant analysis: finds candidate files that may not have received a project's own previously-published security fix, seeded from that project's real advisory history.
 
 **[silent-patch-finder](https://github.com/VOE9/silent-patch-finder)** — scans commit history for undisclosed security fixes: a defensive-shaped diff paired with a commit message that doesn't say so.
+
+**[scopewatch](https://github.com/VOE9/scopewatch)** — tracks published bug bounty scope pages over time and reports exactly what changed: new domains, new repos, or assets pulled out of scope. A change is a lead, not a finding — it stops there on purpose.
 
 ---
 
